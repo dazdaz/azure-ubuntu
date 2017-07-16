@@ -1,3 +1,4 @@
+<pre>
 # Configure Ubuntu 17.04 Server on Azure
 # 15th July 2017
 # Apps / Tools : az, docker-ce
@@ -59,3 +60,4 @@ java -jar jenkins-cli.jar -s http://127.0.0.1:8080 who-am-i --username admin --p
 
 # https://www.digitalocean.com/community/tutorials/how-to-set-up-continuous-integration-pipelines-in-jenkins-on-ubuntu-16-04
 # http://www.scmgalaxy.com/tutorials/complete-guide-to-use-jenkins-cli-command-line
+</pre>
