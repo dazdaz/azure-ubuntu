@@ -32,6 +32,9 @@ sudo apt-key adv --keyserver packages.microsoft.com --recv-keys 417A0893
 sudo apt-get install apt-transport-https
 sudo apt-get update && sudo apt-get install azure-cli
 
+# Install latest kubectl using az
+sudo az acs kubernetes install-cli
+
 # Install additional apps+tools
 sudo apt install golang-go nginx links python-pip
 
