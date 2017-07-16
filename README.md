@@ -7,15 +7,13 @@
 
 MYUSER=motorhead
 
+# Install docker community edition
 sudo add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    $(lsb_release -cs) \
    stable"
-
 # Update the apt package index
 sudo apt-get update
-
-# Install docker community edition
 sudo apt-get install docker-ce
 systemctl unmask docker
 systemctl unmask docker.socket
