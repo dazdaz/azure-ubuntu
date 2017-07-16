@@ -1,6 +1,6 @@
 <pre>
 # Configure Ubuntu 17.04 Server on Azure
-# 15th July 2017
+# 16th July 2017
 # Apps / Tools : az, docker-ce
 
 # Edit Inbound NSG's - 80/tcp, 443/tcp, 8080/tcp
@@ -61,4 +61,21 @@ java -jar jenkins-cli.jar -s http://127.0.0.1:8080 who-am-i --username admin --p
 
 # https://www.digitalocean.com/community/tutorials/how-to-set-up-continuous-integration-pipelines-in-jenkins-on-ubuntu-16-04
 # http://www.scmgalaxy.com/tutorials/complete-guide-to-use-jenkins-cli-command-line
+
+# Configure acs-engine
+mkdir $HOME/gopath
+# Add to $HOME/.profile
+cat >> $HOME/.profile <<_EOF_
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/gopath
+_EOF_
+source $HOME/.profile
+go get github.com/Azure/acs-engine
+go get all
+cd $GOPATH/src/github.com/Azure/acs-engine
+go build
+./acs-engine
+
+# https://github.com/Azure/acs-engine/blob/master/docs/acsengine.md
+
 </pre>
