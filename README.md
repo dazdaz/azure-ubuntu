@@ -34,7 +34,7 @@ sudo apt-get update && sudo apt-get install azure-cli
 sudo az acs kubernetes install-cli
 
 # Install additional apps+tools
-sudo apt install golang-go nginx links python-pip
+sudo apt install golang-go links python-pip jq
 
 # Configure firewalling and allow 22/tcp,80/tcp,443/tcp
 sudo ufw allow ssh/tcp
