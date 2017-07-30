@@ -7,6 +7,9 @@
 
 MYUSER=motorhead
 
+# Configure the time zone after deploying on Azure
+timedatectl set-timezone Asia/Singapore
+
 # Install docker community edition
 sudo add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
@@ -39,7 +42,7 @@ sudo apt install golang-go links python-pip jq
 # Configure firewalling and allow 22/tcp,80/tcp,443/tcp
 sudo ufw allow ssh/tcp
 sudo ufw allow http/tcp
-sudo ufw allow ssh/tcp
+sudo ufw allow https/tcp
 sudo ufw logging on
 sudo ufw enable
 sudo ufw status verbose
