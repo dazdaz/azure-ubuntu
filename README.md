@@ -1,6 +1,6 @@
 <pre>
-# Configure Ubuntu 17.04 Server on Azure
-# 16th July 2017
+# Configure Ubuntu 17.10 Server on Azure
+# 30th Jan 2018
 # Apps / Tools : az, docker-ce
 
 # Edit Inbound NSG's - 80/tcp, 443/tcp, 8080/tcp
@@ -10,6 +10,16 @@ MYUSER=motorhead
 # Configure the time zone after deploying on Azure
 timedatectl set-timezone Asia/Singapore
 
+# Install packages to allow apt to use a repository over HTTPS:
+sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    software-properties-common
+
+# Add Docker’s official GPG key:
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
 # Install docker community edition
 sudo add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
@@ -17,6 +27,7 @@ sudo add-apt-repository \
    stable"
 # Update the apt package index
 sudo apt-get update
+
 sudo apt-get install docker-ce
 systemctl unmask docker
 systemctl unmask docker.socket
