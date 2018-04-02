@@ -68,7 +68,10 @@ systemctl start jenkins
 sudo systemctl status jenkins
 sudo ufw allow 8080
 sudo ufw enable
+</pre>
 
+# This is optional and not related to the Ubuntu Build configuration.
+<pre>
 wget http://127.0.0.1:8080/jnlpJars/jenkins-cli.jar
 JENKINSADMINPASS=$(cat /var/lib/jenkins/secrets/initialAdminPassword)
 java -jar jenkins-cli.jar -s http://127.0.0.1:8080 who-am-i --username admin --password $JENKINSADMINPASS
