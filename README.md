@@ -1,5 +1,31 @@
-<pre>
-# Configure Ubuntu 17.10 Server on Azure
+*Check latest URN's for Ubuntu
+```
+az vm image list --location southeastasia --offer UbuntuServer --publisher Canonical --sku 18.04 --all --output table
+```
+```
+$ az group create --name ubu1804-rg --location southeastasia
+$ az vm create --location southeastasia --resource-group ubu1804-rg --name ubu1804 --public-ip-address-dns-name ubu1804 \
+--image Canonical:UbuntuServer:18.04-DAILY-LTS:18.04.201804262 --admin-username myuser --admin-password 'SS12345678$$' \
+--size Standard_B1ms \
+--data-disk-sizes-gb 5 --tags environmenttype=dev owner=harry@oceanliner.com
+ssh -l myuser ubu1804.southeastasia.cloudapp.azure.com
+# Install updates
+sudo yum -y update ; sudo reboot
+```
+## Configure 1st Data Disk
+```
+$ (echo n; echo p; echo 1; echo ; echo ; echo w) | sudo fdisk /dev/sdc
+$ sudo mkfs -t ext4 /dev/sdc1
+$ sudo mkdir /datadrive1 && sudo mount /dev/sdc1 /datadrive1
+$ df -h
+$ mount
+$ sudo -i blkid | grep sdc1
+/dev/sdc1: UUID="cda63657-f1a5-4739-b50c-8339768e8ec8" TYPE="ext4"
+# Add to /etc/fstab
+UUID=cda63657-f1a5-4739-b50c-8339768e8ec8   /datadrive1  ext4    defaults,nofail,barrier=0   0  2
+```
+```
+# Configure Ubuntu 18.04 Server on Azure
 # 30th Jan 2018
 # Apps / Tools : az, docker-ce
 
@@ -57,11 +83,11 @@ sudo ufw allow https/tcp
 sudo ufw logging on
 sudo ufw enable
 sudo ufw status verbose
-</pre>
+```
 
-# This is optional and not related to the Ubuntu Build configuration.
-<pre>
-# Deploy Jenkins
+## This is optional and not related to the Ubuntu Build configuration.
+```
+## Deploy Jenkins
 sudo wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
 sudo echo deb http://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list
 sudo apt-get update
@@ -94,5 +120,4 @@ go build
 ./acs-engine
 
 # https://github.com/Azure/acs-engine/blob/master/docs/acsengine.md
-
-</pre>
+```
