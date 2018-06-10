@@ -1,4 +1,4 @@
-*Check latest URN's for Ubuntu
+* Check latest URN's for Ubuntu
 ```
 az vm image list --location southeastasia --offer UbuntuServer --publisher Canonical --sku 18.04 --all --output table
 ```
