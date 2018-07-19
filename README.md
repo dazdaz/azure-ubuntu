@@ -70,6 +70,11 @@ sudo apt-key adv --keyserver packages.microsoft.com --recv-keys EB3E94ADBE1229CF
 sudo apt-get install apt-transport-https
 sudo apt-get update && sudo apt-get install azure-cli
 
+# fish-shell
+sudo apt-add-repository ppa:fish-shell/release-2
+sudo apt-get update
+sudo apt-get install fish
+
 # Install latest kubectl using az
 sudo az acs kubernetes install-cli
 
