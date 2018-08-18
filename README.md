@@ -57,9 +57,10 @@ sudo apt-get update
 sudo apt-get install docker-ce
 systemctl unmask docker
 systemctl unmask docker.socket
-sudo usermod -aG docker $MYUSER
+sudo usermod -aG docker $USER
+newgrp docker
 sudo systemctl start docker
-sudo docker run hello-world
+docker run hello-world
 docker info
 docker version
 
