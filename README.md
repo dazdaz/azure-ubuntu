@@ -64,6 +64,10 @@ docker run hello-world
 docker info
 docker version
 
+# Deploy the latest version of docker-compose to workaround bug, check no conflict with existing docker-compose else remove first
+sudo curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+sudo chmod a+x /usr/local/bin/docker-compose
+
 # Install az CLI 2
 echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ wheezy main" | \
      sudo tee /etc/apt/sources.list.d/azure-cli.list
