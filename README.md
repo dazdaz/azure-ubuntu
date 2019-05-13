@@ -68,6 +68,9 @@ docker version
 sudo curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
 sudo chmod a+x /usr/local/bin/docker-compose
 
+# We want the defualt Python to be version 3, particularly for azure-cli
+sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 2
+
 # Install az CLI 2
 echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ wheezy main" | \
      sudo tee /etc/apt/sources.list.d/azure-cli.list
